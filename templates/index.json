@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "main-carousel": { "type": "carousel" },
+    "footer": { "type": "footer" }
+  },
+  "order": ["main-carousel", "footer"]
+}

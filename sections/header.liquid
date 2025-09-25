@@ -1,3 +1,21 @@
-<header>
-  <h2>{{ shop.name }}</h2>
+<header class="site-header" role="banner">
+  <div class="header-wrapper">
+    <div class="site-logo">
+      <a href="{{ shop.url }}">
+        <img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" />
+      </a>
+    </div>
+
+    <nav role="navigation">
+      <ul class="main-menu">
+        <li><a href="/collections/kanchipuram">Kanchipuram</a></li>
+        <li><a href="/collections/weave">Weave</a></li>
+        <li><a href="/collections/whats-new">Whats New</a></li>
+      </ul>
+    </nav>
+    
+    <div class="header-icons">
+      <!-- Add cart, search icons etc. -->
+    </div>
+  </div>
 </header>

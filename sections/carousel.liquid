@@ -1,0 +1,53 @@
+<div class="carousel">
+  {% for block in section.blocks %}
+    <div class="slide">
+      {% if block.settings.video_url != blank %}
+        <video autoplay muted loop playsinline>
+          <source src="{{ block.settings.video_url }}" type="video/mp4" />
+        </video>
+      {% else %}
+        <img src="{{ block.settings.image | img_url: '1920x1080' }}" alt="{{ block.settings.alt_text }}" />
+      {% endif %}
+      {% if block.settings.text != blank %}
+        <div class="overlay-text">{{ block.settings.text }}</div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+{{ {% schema %}
+    {
+        "name": "Homepage Carousel",
+        "max_blocks": 5,
+        "settings": [],
+        "blocks": [
+            {
+            "type": "slide",
+            "name": "Slide",
+            "settings": [
+                {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Slide Image"
+                },
+                {
+                "type": "url",
+                "id": "video_url",
+                "label": "Slide Video URL"
+                },
+                {
+                "type": "text",
+                "id": "alt_text",
+                "label": "Image Alt Text"
+                },
+                {
+                "type": "text",
+                "id": "text",
+                "label": "Overlay Text"
+                }
+            ]
+            }
+        ]
+    }
+
+{% endschema %} }}
