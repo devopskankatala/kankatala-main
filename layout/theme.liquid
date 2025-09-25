@@ -5,7 +5,8 @@
         <title>{{ shop.name }}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {{ 'theme.css' | asset_url | stylesheet_tag }}
-        {{ 'theme.js' | asset_url | script_tag }}
+        {{ content_for_header }}
+        <script src="{{ 'theme.js' | asset_url }}" defer></script>
     </head>
     <body>
     {% section 'header' %}
