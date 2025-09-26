@@ -1,0 +1,42 @@
+{% assign desktop_video = desktop_video | default: false %}
+{% assign mobile_video = mobile_video | default: false %}
+{% assign video_class = class | default: '' %}
+
+<div class="responsive-video {{ video_class }}">
+  <video
+    id="responsive-video"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="metadata"
+    poster=""
+    style="width: 100%; height: auto; object-fit: cover;"
+    class="w-full h-auto"
+  >
+    <source id="responsive-video-source" src="" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var video = document.getElementById('responsive-video');
+    var source = document.getElementById('responsive-video-source');
+    var isMobile = window.innerWidth <= 600;
+    {% assign mobile_mp4 = mobile_video.sources | where: "format", "mp4" | sort: "width" | reverse | first %}
+    {% assign desktop_mp4 = desktop_video.sources | where: "format", "mp4" | sort: "width" | reverse | first %}
+    var mobileSrc = "{{ mobile_mp4.url | escape }}";
+    var desktopSrc = "{{ desktop_mp4.url | escape }}";
+    var mobilePoster = "{{ mobile_video.preview_image.src | image_url: width: 720 }}";
+    var desktopPoster = "{{ desktop_video.preview_image.src | image_url: width: 720 }}";
+    if (isMobile && mobileSrc) {
+      source.src = mobileSrc;
+      video.poster = mobilePoster;
+    } else if (desktopSrc) {
+      source.src = desktopSrc;
+      video.poster = desktopPoster;
+    }
+    video.load();
+  });
+</script>
