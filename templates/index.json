@@ -31,11 +31,22 @@
             "alt_text": "",
             "text": ""
           }
+        },
+        "slide_66k9gR": {
+          "type": "slide",
+          "settings": {
+            "media_type": "video",
+            "alt_text": "",
+            "text": "",
+            "desktop_video": "shopify://files/videos/video tile _desktop.mp4",
+            "mobile_video": "shopify://files/videos/AAA.mp4"
+          }
         }
       },
       "block_order": [
         "slide_TVJJBY",
-        "slide_HmBqLK"
+        "slide_HmBqLK",
+        "slide_66k9gR"
       ],
       "settings": {}
     }
